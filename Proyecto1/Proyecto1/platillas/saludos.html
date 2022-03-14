@@ -1,10 +1,24 @@
 <html>
     <body>
+        {% include 'barra.html' %}
         <h1>
             hola es mi primera plantilla
         </h1>
-        <p>El nombre del profesor es: {{nombre_persona}} {{apellido_persona}}</p>
+        <p>El nombre del profesor es: {{nombre_persona|upper}} {{apellido_persona}}</p>
         <p>Fecha actual: {{momento_actual.day}} / {{momento_actual.month}} / {{momento_actual.year}}</p>
         <p>Creado por: {{creador.nombre}} {{creador.apellido}}</p>
+        <p><strong>Temas del curso</strong></p>
+        <p>
+            {% if temas %}
+                <ul>
+                    {% for eltema in temas %}
+                        <li>{{eltema}}</li>
+                    {% endfor %}
+                </ul>
+            
+            {% else %}
+                <p>No hay elementos que mostrar</p>
+            {% endif %}
+        </p>
     </body>
 </html>
